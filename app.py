@@ -1094,13 +1094,14 @@ def create_admin_user():
 # Create Tables and Admin User
 # ============================================
 
+# Initialize database
 with app.app_context():
     db.create_all()
     create_admin_user()
 
-# Local run
+# Railway / Gunicorn entry point
+application = app
+
+# Local development
 if __name__ == '__main__':
     app.run(debug=True)
-
-# Vercel entry
-application = app
